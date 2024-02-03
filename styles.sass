@@ -4,21 +4,30 @@ $black: #000
 $primary: #B88E2F
 $gray: gray
 $overlay: #000000b3
+$inspirations-bg: #FCF8F3
 
 .global-wrapper
   max-width: 1440px
   display: flex
   flex-direction: column
+  margin: auto
+  overflow: hidden
 
 .section
   display: flex
-  padding: 0 7%
   gap: 5px
   flex-direction: column
   justify-content: center
+  margin-bottom: 40px
 
-.section-gallery
-  padding: 0 7% 0 0
+.section_paddin-rl-7\%
+  padding: 3% 7%
+
+.section_padding-l-7\%
+  padding: 3% 0 3% 7%
+
+.section_bg-colored
+  background: $inspirations-bg
 
 .header
   display: flex
@@ -49,19 +58,17 @@ $overlay: #000000b3
 
 .nav
   display: flex
-  gap: 200px
-  justify-content: space-between
+
+.nav_gap-15vw
+  gap: 20vw
 
 .list
   display: flex
   flex-wrap: wrap
   gap: 30px
+
+.list_justify-content-center
   justify-content: center
-
-
-.list__item_width-25\%
-  width: 25%
-
 
 .list_direction-row
   flex-direction: row
@@ -102,41 +109,56 @@ $overlay: #000000b3
   display: flex
   flex-direction: column
   gap: 10px
-  width: 25vw
-  height: 70vh
+  position: relative
+  width: 100%
+  height: 100%
 
-.figure_size-card
-  width: 18vw
+.figure_height-30vw
+  width: 20vw
+  height: 30vw
+
+.list__item
+  flex-shrink: 0
+
+.list__item_size-1\/4
+  width: 20%
   height: 50vh
+
+.list__item_size-1\/3
+  width: 30%
+  height: 70vh
 
 .figure_align-center
   align-items: center
 
 .img-wrapper
   overflow: hidden
-  height: 80%
+  height: 100%
   width: 100%
 
-.img-wrapper_height-200px
-  height: 400px
+.img-wrapper_height-30vw
+  height: 25vw
+  width: 20vw
+  flex-shrink: 0
 
 .img
   object-fit: cover
   width: 100%
   height: 100%
 
-.gallery
-  position: relative
-  max-width: 70%
-
 .gallery__img
-  max-width: 100px
-  max-height: 100px
+  max-width: 20vw
+  max-height: 20vw
+  object-fit: contain
+  object-position: bottom
 
-.figure_position-relative
-  position: relative
+.gallery__img_object-position-bottom
+  object-position: bottom
 
-.figure_position-relative:hover
+.gallery__img_object-position-top
+  object-position: top
+
+.figure_covered:hover
   .cover
     display: flex
     flex-direction: column
@@ -144,21 +166,10 @@ $overlay: #000000b3
     justify-content: center
 
 
-.figcaption_position-absolute
-  position: absolute
-  bottom: 0
-
-
 .list_position-absolute
   position: absolute
   bottom: 0
   right: -75px
-
-.button_position-absolute
-  position: absolute
-  top: 50%
-  transform: translateY(-50%)
-  right: 0
 
 .cover
   display: none
@@ -171,6 +182,7 @@ $overlay: #000000b3
 
 .flex-container
   display: flex
+  position: relative
 
 .flex-container_direction-row
   flex-direction: row
@@ -184,15 +196,30 @@ $overlay: #000000b3
 .flex-container_justify-right
   justify-content: right
 
+.flex-container_justify-center
+  justify-content: center
+
+.flex-container_gap-15px
+  gap: 15px
+
+.flex-container_width-45vw
+  width: 45vw
+
 .footer
   display: flex
   flex-direction: column
   justify-content: space-between
   border-top: 1px solid $gray
+  padding: 0 7%
 
 .footer__main
   display: flex
+  border-bottom: $gray solid 1px
+  justify-content: space-between
+  padding: 3% 0
 
+.watermark
+  padding: 3% 0
 
 .main
   display: flex
@@ -229,7 +256,15 @@ $overlay: #000000b3
   line-height: normal
 
 .button
-  padding: 20px 30px
+  //padding: 20px 30px
+  cursor: pointer
+  position: relative
+
+.button_position-absolute
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+  right: 0
 
 .button_transparent
   background: none
@@ -239,19 +274,29 @@ $overlay: #000000b3
   color: $white
 
 .button_shape-round
-  padding: 5px
   border-radius: 50%
-  background-color: $gray
+  padding: 13px
 
-.button_shape-round:active
-  background-color: $primary
+.button_shape-round.active
+  border: 1px solid $primary
+  .button__circle
+    background-color: $primary
+
+.button__circle
+  border-radius: 50%
+  padding: 6px
+  background-color: $gray
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
 
 .grid-container
   display: grid
   grid-template-columns: repeat(3, minmax(100px, 1fr))
   grid-template-rows: repeat(auto-fit, minmax(100px, 1fr))
 
-.content-container
+.figcaption_position-absolute
   position: absolute
   bottom: 0
   display: flex
@@ -261,12 +306,28 @@ $overlay: #000000b3
 .text_color-white
   color: $white
 
-.img-container
-  display: flex
-  flex-direction: row
-
 .horizontal-line
   display: block
   width: 100%
   height: 1px
   background: black
+
+.tag
+  border-radius: 50%
+  background: aqua
+  padding: 25px
+  position: absolute
+  top: 2%
+  right: 3%
+
+.tag__text
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+.dot
+  height: 25px
+  width: 25px
+  border-radius: 50%
+  display: inline-block
