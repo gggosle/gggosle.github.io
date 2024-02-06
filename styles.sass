@@ -200,7 +200,7 @@ $body-width: min(100vw, #{$maximum-width})
   height: 100%
   width: 100%
 
-.img-wrapper_height-30vw
+.slider__img
   width: calculate-custom-value(28)
   height: calculate-custom-value(34)
 
@@ -304,10 +304,15 @@ $body-width: min(100vw, #{$maximum-width})
 
 .slider
   width: calculate-custom-value(62)
+  overflow: hidden
+
+.slider-section__content
+  max-width: 30%
 
 .slider__figure
   width: calculate-custom-value(28)
   height: calculate-custom-value(40)
+
 
 .slider__content
   padding: 1.7em
@@ -436,12 +441,12 @@ $body-width: min(100vw, #{$maximum-width})
   max-width: 46%
   padding: calculate-custom-value(1.3)
 
-.figcaption_position-absolute
+.slider__info
   position: absolute
   bottom: 0
   padding: 10px
 
-.figcaption__container
+.info__container
   width: 100%
   display: flex
   align-items: flex-end
@@ -566,8 +571,10 @@ $body-width: min(100vw, #{$maximum-width})
     justify-content: center
     width: 100%
 
+
   .slider-section__content
     align-items: center
+
 
   .slider__figure
     width: calculate-custom-value(50)

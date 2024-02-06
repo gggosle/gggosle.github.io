@@ -365,57 +365,50 @@
             </div>
             <div class="flex-container slider">
                 <div class="flex-container flex-container_direction-row flex-container_gap-15px slider__container">
-                    <figure class="figure slider__figure">
-                        <img src="./images/inner-peace.png" alt="" class="img">
-                        <figcaption class="figcaption figcaption_position-absolute">
-                            <div class="figcaption__container">
-                                <div class="slider__content">
-                                    <p class="text">01 - Bed Room</p>
-                                    <h2 class="slider__title">Inner Peace</h2>
-                                </div>
-                                <button class="button button_color-orange figure__button"><i class="fa-solid fa-arrow-right fa-lg" style="color: #fff;"></i></button>
-                            </div>
-
-                        </figcaption>
-                    </figure>
-                    <div class="flex-container flex-container_direction-column">
                         <ul class="flex-container flex-container_gap-15px slider__img-container">
-                            <li class="list__item">
-                                <div class="img-wrapper img-wrapper_height-30vw">
+                            <li class="list__item slider__img slider__figure">
+                                <img src="./images/inner-peace.png" alt="" class="img">
+                                <div class="slider__info">
+                                    <div class="info__container">
+                                        <div class="slider__content">
+                                            <p class="text">01 - Bed Room</p>
+                                            <h2 class="slider__title">Inner Peace</h2>
+                                        </div>
+                                        <button class="button button_color-orange figure__button"><i class="fa-solid fa-arrow-right fa-lg" style="color: #fff;"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list__item slider__img">
                                     <img src="./images/gallery-photo_christ.png" alt="" class="img">
-                                </div>
                             </li>
-                            <li class="list__item">
-                                <div class="img-wrapper img-wrapper_height-30vw">
-                                    <img src="/images/gallery-photo_messy.png" alt="" class="img">
-                                </div>
+                            <li class="list__item slider__img">
+                                    <img src="./images/gallery-photo_messy.png" alt="" class="img">
                             </li>
                         </ul>
-                        <ul class="list flex-container_align-center">
-                            <li class="list__item">
-                                <button class="button  button_shape-round active">
-                                    <span class="button__inner button__circle"></span>
-                                </button>
-                            </li>
-                            <li class="list__item">
-                                <button class="button button_shape-round">
-                                    <span class="button__inner button__circle"></span>
-                                </button>
-                            </li>
-                            <li class="list__item">
-                                <button class="button button_shape-round">
-                                    <span class="button__inner button__circle"></span>
-                                </button>
-                            </li>
-                            <li class="list__item">
-                                <button class="button button_shape-round">
-                                    <span class="button__inner button__circle"></span>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
+<!--                        <ul class="list flex-container_align-center">-->
+<!--                            <li class="list__item">-->
+<!--                                <button class="button  button_shape-round active">-->
+<!--                                    <span class="button__inner button__circle"></span>-->
+<!--                                </button>-->
+<!--                            </li>-->
+<!--                            <li class="list__item">-->
+<!--                                <button class="button button_shape-round">-->
+<!--                                    <span class="button__inner button__circle"></span>-->
+<!--                                </button>-->
+<!--                            </li>-->
+<!--                            <li class="list__item">-->
+<!--                                <button class="button button_shape-round">-->
+<!--                                    <span class="button__inner button__circle"></span>-->
+<!--                                </button>-->
+<!--                            </li>-->
+<!--                            <li class="list__item">-->
+<!--                                <button class="button button_shape-round">-->
+<!--                                    <span class="button__inner button__circle"></span>-->
+<!--                                </button>-->
+<!--                            </li>-->
+<!--                        </ul>-->
                 </div>
-                <button class="button button_shape-round button_color-white slider__button button_position-absolute"><span class="button__inner button__arrow"></span></button>
+                <button class="button button_shape-round button_color-white slider__button button_position-absolute" id="nextButton"><span class="button__inner button__arrow"></span></button>
             </div>
         </div>
     </section>
@@ -438,7 +431,6 @@
             <div class="flex-container  flex-container_align-center">
                 <img src="./images/gallery-photo_near-bed.png" alt="" class="gallery__middle-img">
             </div>
-
             <div class="  flex-container  flex-container_direction-column  flex-container_gap-15px ">
                 <div class="row3 gallery__row flex-container flex-container_direction-column flex-container_align-start  flex-container_gap-15px">
                     <img src="./images/gallery-photo_bedroom.png"   alt="" class="row3__img gallery__img">
@@ -493,5 +485,6 @@
         <div class="watermark">2023 furino. All rights reverved</div>
     </footer>
 </div>
+<script src="script.js"></script>
 </body>
 </html>
