@@ -1,6 +1,6 @@
 "use strict"
-const imageList = document.querySelector('.slider__img-container')
 const slider = document.querySelector('.slider__container');
+const slider__nav = document.querySelector('.slider__nav');
 const nextBtn = document.getElementById('nextButton');
 const prevBtn = document.getElementById('prevButton');
 const maximumWidth = 1440;
@@ -31,11 +31,11 @@ function createSliderNavButton(index) {
     listItem.classList.add('list__item');
 
     let button = document.createElement('button');
-    button.classList.add('button', 'button_shape-round', 'active');
-    // button.id = `sliderButton_${index}`
+    button.classList.add('button', 'button_shape-round');
+    button.id = `sliderNavButton_${index}`
     button.addEventListener('click', () => {
-        currentIndex = index;
         removeActive();
+        currentIndex = index;
         moveActive();
         updateSlider();
     });
@@ -85,25 +85,26 @@ function createSliderInfo(object) {
 }
 
 function updateSlider() {
+    const translationValue = (window.innerWidth > 768)? calculateCustomValue(28) + 15 : calculateCustomValue(50);
     slider.style.transition = 'transform 0.5s ease';
-    slider.style.transform = `translateX(${-currentIndex * (calculateCustomValue(28)+15)}px)`;
+    slider.style.transform = `translateX(${-currentIndex * translationValue}px)`;
 }
 
 function removeActive() {
     activeElement.classList.remove('slider__active');
     activeElement.removeChild(document.querySelector('.slider__info'))
-}
-
-function assignActive() {
-    activeElement.classList.add('slider__active');
+    let activeButton = document.getElementById(`sliderNavButton_${currentIndex}`);
+    activeButton.classList.remove('slider__nav-button_active');
+    console.log(activeButton.classList);
 }
 
 function  moveActive() {
-    console.log(currentIndex);
     activeElement = document.getElementById(`sliderImage_${currentIndex}`);
     const sliderInfo = createSliderInfo(sliderContainer[currentIndex]);
     activeElement.appendChild(sliderInfo);
-    assignActive();
+    activeElement.classList.add('slider__active');
+    const activeButton = document.getElementById(`sliderNavButton_${currentIndex}`);
+    activeButton.classList.add('slider__nav-button_active');
 }
 
 class SliderImg {
@@ -125,26 +126,24 @@ const sliderLength = sliderContainer.length;
 window.addEventListener('load', ()=> {
     sliderContainer.forEach((element, index)=>{
         const sliderElement = createSliderElement(index);
-        imageList.appendChild(sliderElement);
-        createSliderNavButton(index);
+        const sliderNavButton = createSliderNavButton(index);
+        slider.appendChild(sliderElement);
+        slider__nav.appendChild(sliderNavButton);
     });
-    activeElement = imageList.firstElementChild;
-    const sliderInfo = createSliderInfo(sliderContainer[0]);
-    activeElement.appendChild(sliderInfo);
-    assignActive();
+    moveActive();
 });
 
 nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1 > sliderLength - 1)? 0 : ++currentIndex;
     removeActive();
+    currentIndex = (currentIndex + 1 > sliderLength - 1)? 0 : ++currentIndex;
     updateSlider();
     moveActive();
 
 });
 
 prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 < 0)? sliderLength - 1 : --currentIndex;
     removeActive();
+    currentIndex = (currentIndex - 1 < 0)? sliderLength - 1 : --currentIndex;
     updateSlider();
     moveActive();
 });
