@@ -25,12 +25,11 @@ $body-width: min(100vw, #{$maximum-width})
   to
     height: calculate-custom-value(40)
 
-@keyframes increaseHeightResponsive
+@keyframes decreaseHeight
   from
-    height: calculate-custom-value(70)
+    height: calculate-custom-value(40)
   to
-    height: calculate-custom-value(75)
-
+    height: calculate-custom-value(34)
 
 .global-wrapper
   max-width: 1440px
@@ -283,9 +282,6 @@ $body-width: min(100vw, #{$maximum-width})
   max-width: calculate-custom-value(27)
   max-height: calculate-custom-value(27)
 
-
-
-
 .list_position-absolute
   position: absolute
   bottom: 0
@@ -333,6 +329,9 @@ $body-width: min(100vw, #{$maximum-width})
 
 .slider__active
   animation: increaseHeight 2s forwards
+
+.slider__ex-active
+  animation: decreaseHeight 0.3s forwards
 
 .slider__content
   padding: 1.7em
@@ -614,7 +613,7 @@ $body-width: min(100vw, #{$maximum-width})
     height: calculate-custom-value(70)
 
   .slider__active
-    animation: increaseHeightResponsive 2s forwards
+    animation: none
 
   .slider__button
     border: 1px $primary solid

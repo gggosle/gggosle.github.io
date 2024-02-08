@@ -5,33 +5,38 @@ const sliderNav = document.querySelector('.slider__nav');
 const nextBtn = document.getElementById('nextButton');
 const prevBtn = document.getElementById('prevButton');
 const maximumWidth = 1440;
+const responsiveSliderWidth = 768;
+const sliderExActiveClass = 'slider__ex-active';
 let currentIndex = 0;
 let activeElement;
+let exActiveElement;
 let bodyWidth;
 
 function calculateCustomValue(percentage) {
-    bodyWidth =  Math.min(window.innerWidth, maximumWidth);
+    bodyWidth = Math.min(window.innerWidth, maximumWidth);
+
     return bodyWidth * (percentage / 100);
 }
 
 function createSliderElement(index) {
-    let listItem = document.createElement('li');
+    const listItem = document.createElement('li');
     listItem.className = 'list__item slider__img';
     listItem.id = `sliderImage_${index}`;
 
-    let img = document.createElement('img');
+    const img = document.createElement('img');
     img.src = sliderContainer[index].url;
     img.alt = sliderContainer[index].alt;
     img.className = 'img';
     listItem.appendChild(img);
+
     return listItem;
 }
 
 function createSliderNavButton(index) {
-    let listItem = document.createElement('li');
+    const listItem = document.createElement('li');
     listItem.classList.add('list__item');
 
-    let button = document.createElement('button');
+    const button = document.createElement('button');
     button.classList.add('button', 'button_shape-round');
     button.id = `sliderNavButton_${index}`
     button.addEventListener('click', () => {
@@ -41,10 +46,11 @@ function createSliderNavButton(index) {
         updateSlider();
     });
 
-    let span = document.createElement('span');
+    const span = document.createElement('span');
     span.classList.add('button__inner', 'button__circle');
     button.appendChild(span);
     listItem.appendChild(button);
+
     return listItem;
 }
 
@@ -82,11 +88,12 @@ function createSliderInfo(object) {
     container.appendChild(button);
 
     sliderInfo.appendChild(container);
+
     return sliderInfo;
 }
 
 function updateSlider() {
-    const translationValue = (window.innerWidth > 768)? calculateCustomValue(28) + 15 : calculateCustomValue(50);
+    const translationValue = (window.innerWidth > responsiveSliderWidth)? calculateCustomValue(28) + 15 : calculateCustomValue(50);
     slider.style.transition = 'transform 0.5s ease';
     slider.style.transform = `translateX(${-currentIndex * translationValue}px)`;
 }
@@ -94,9 +101,14 @@ function updateSlider() {
 function removeActive() {
     activeElement.classList.remove('slider__active');
     activeElement.removeChild(document.querySelector('.slider__info'))
-    let activeButton = document.getElementById(`sliderNavButton_${currentIndex}`);
+    const activeButton = document.getElementById(`sliderNavButton_${currentIndex}`);
     activeButton.classList.remove('slider__nav-button_active');
-    console.log(activeButton.classList);
+
+    if(exActiveElement) exActiveElement.classList.remove(sliderExActiveClass);
+    if(window.innerWidth > responsiveSliderWidth){
+        exActiveElement = activeElement;
+        exActiveElement.classList.add(sliderExActiveClass);
+    }
 }
 
 function  moveActive() {
@@ -106,6 +118,19 @@ function  moveActive() {
     activeElement.classList.add('slider__active');
     const activeButton = document.getElementById(`sliderNavButton_${currentIndex}`);
     activeButton.classList.add('slider__nav-button_active');
+}
+
+function updateIndex(currentIndex, sliderLength, add) {
+    const updatedIndex = currentIndex + add;
+    if(updatedIndex > sliderLength-1) {
+        return  0;
+    }
+    else if(updatedIndex < 0) {
+        return  sliderLength - 1;
+    }
+    else {
+        return updatedIndex;
+    }
 }
 
 class SliderImg {
@@ -135,7 +160,7 @@ window.addEventListener('load', ()=> {
 
 nextBtn.addEventListener('click', () => {
     removeActive();
-    currentIndex = (currentIndex + 1 > sliderLength - 1)? 0 : ++currentIndex;
+    currentIndex =  updateIndex(currentIndex, sliderLength, 1);
     updateSlider();
     moveActive();
 
@@ -143,7 +168,7 @@ nextBtn.addEventListener('click', () => {
 
 prevBtn.addEventListener('click', () => {
     removeActive();
-    currentIndex = (currentIndex - 1 < 0)? sliderLength - 1 : --currentIndex;
+    currentIndex =  updateIndex(currentIndex, sliderLength, -1);
     updateSlider();
     moveActive();
 });
