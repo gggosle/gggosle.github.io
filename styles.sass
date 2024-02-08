@@ -596,6 +596,9 @@ $body-width: min(100vw, #{$maximum-width})
   .section__slider
     width: calculate-custom-value(50)
 
+  .slider
+    height: calculate-custom-value(85)
+
   .slider__container
     gap: 0
 
@@ -616,6 +619,9 @@ $body-width: min(100vw, #{$maximum-width})
     right: -20px
 
   .slider__nav
-    display: none
+    bottom: 0
+    left: 50%
+    transform: translate(-50%)
+
   .section_padding-l-7\%
     padding: 1% 7%

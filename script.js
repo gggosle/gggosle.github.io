@@ -1,6 +1,7 @@
 "use strict"
+
 const slider = document.querySelector('.slider__container');
-const slider__nav = document.querySelector('.slider__nav');
+const sliderNav = document.querySelector('.slider__nav');
 const nextBtn = document.getElementById('nextButton');
 const prevBtn = document.getElementById('prevButton');
 const maximumWidth = 1440;
@@ -108,8 +109,7 @@ function  moveActive() {
 }
 
 class SliderImg {
-    constructor(id, title, subtitle, url, alt) {
-        this.id = id;
+    constructor(title, subtitle, url, alt) {
         this.title = title;
         this.subtitle = subtitle;
         this.url = url;
@@ -117,9 +117,9 @@ class SliderImg {
     }
 }
 
-const sliderImg1 = new SliderImg(0, "01 - Bed Room","Over Peace", "./images/inner-peace.png", "bedroom" );
-const sliderImg2 = new SliderImg(1, "02 - Kitchen","Outer Peace", "./images/gallery-photo_christ.png", "kitchen");
-const sliderImg3 = new SliderImg(2, "03 - Bathroom","Inner Wreck", "./images/gallery-photo_messy.png", "bathroom");
+const sliderImg1 = new SliderImg("01 - Bed Room","Over Peace", "./images/inner-peace.png", "bedroom" );
+const sliderImg2 = new SliderImg("02 - Kitchen","Outer Peace", "./images/gallery-photo_christ.png", "kitchen");
+const sliderImg3 = new SliderImg("03 - Bathroom","Inner Wreck", "./images/gallery-photo_messy.png", "bathroom");
 const sliderContainer = [sliderImg1, sliderImg2, sliderImg3];
 const sliderLength = sliderContainer.length;
 
@@ -128,7 +128,7 @@ window.addEventListener('load', ()=> {
         const sliderElement = createSliderElement(index);
         const sliderNavButton = createSliderNavButton(index);
         slider.appendChild(sliderElement);
-        slider__nav.appendChild(sliderNavButton);
+        sliderNav.appendChild(sliderNavButton);
     });
     moveActive();
 });

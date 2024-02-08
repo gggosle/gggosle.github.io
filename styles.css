@@ -682,6 +682,9 @@
   .section__slider {
     width: calc(min(100vw, 1440px) * 50 / 100);
   }
+  .slider {
+    height: calc(min(100vw, 1440px) * 85 / 100);
+  }
   .slider__container {
     gap: 0;
   }
@@ -702,7 +705,9 @@
     right: -20px;
   }
   .slider__nav {
-    display: none;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
   }
   .section_padding-l-7\% {
     padding: 1% 7%;
